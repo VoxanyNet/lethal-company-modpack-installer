@@ -29,6 +29,8 @@ You can instead place this installer in the Lethal Company folder directly.
 You can locate the folder by right clicking the game on Steam and pressing 'Manage', then 'Browse local files'
 "#
         );
+
+        let _ = io::stdin().read_line(&mut String::new());
         
         process::exit(1)
     }
