@@ -1,14 +1,22 @@
 use std::path::{PathBuf,Path};
-use std::{self, env, process, io, io::Cursor};
+use std::{self, env, process, io, io::Cursor, fs};
 use zip_extract;
 
-static MODPACK_URL: &str = "https://voxany.net:8000/modpack.zip";
+static MODPACK_URL: &str = "http://voxany.net:8000/modpack.zip";
 fn main() {
     
     let mut game_directory = PathBuf::from("C:\\Program Files (x86)\\Steam\\steamapps\\common\\Lethal Company");
-
+    
     if Path::new("Lethal Company.exe").exists() {
         game_directory = env::current_dir().expect("Failed to get current directory");
+    }
+
+    let bepinex_folder_path = format!("{}/BepInEx", game_directory.display());
+
+    if Path::new(&bepinex_folder_path).exists() {
+        println!("Found existing BepInEx folder. Press enter to delete the folder and continue... ");
+        let _ = io::stdin().read_line(&mut String::new());
+        fs::remove_dir_all(&bepinex_folder_path).expect("Unable to remove existing BepInEx folder");
     }
 
     if !game_directory.exists() {
