@@ -2,7 +2,7 @@ use std::path::{PathBuf,Path};
 use std::{self, env, process, io, io::Cursor, fs};
 use zip_extract;
 
-static MODPACK_URL: &str = "http://voxany.net:8000/modpack.zip";
+static MODPACK_URL: &str = "https://dl.vxny.io/lethalcompanymodpack.zip";
 fn main() {
     
     let mut game_directory = PathBuf::from("C:\\Program Files (x86)\\Steam\\steamapps\\common\\Lethal Company");
